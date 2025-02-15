@@ -1,0 +1,1 @@
+export const MOVIES_TRENDING_DAILY = "trending/movie/day";
