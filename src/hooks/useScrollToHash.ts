@@ -11,7 +11,7 @@ const useScrollToHash = () => {
                 if (element) {
                     element.scrollIntoView({ behavior: "instant" });
                 }
-            }, 200);
+            }, 500);
         }
     }, [location.hash]);
 };
