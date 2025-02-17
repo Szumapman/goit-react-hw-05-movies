@@ -1,26 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MOVIES_TRENDING_DAILY } from "../constants//APILinks";
 import { Movie } from "../interfaces/Movie";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getCurrentDate } from "../utils/GetCurrentDate";
 import { saveMoviesToLocalStorage, getMoviesFromLocalStorage } from "../utils/MoviesLocalStorage";
+import { createMovieListItems } from "../utils/CreateMovieListItems";
+import useScrollToHash from "../hooks/useScrollToHash";
 
-export const Home = () => {
+const Home = () => {
     const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
     const [error, setError] = useState(false);
     const [currentDate] = useState(getCurrentDate());
     const location = useLocation();
 
+    useScrollToHash();
+
     useEffect(() => {
         const { date, movies } = getMoviesFromLocalStorage();
 
-        if (date && movies && date === currentDate) {
+        if (date && movies?.length > 0 && date === currentDate) {
             setTrendingMovies(movies);
         } else {
             fetchData(MOVIES_TRENDING_DAILY).then(response => {
-                const movies = response.results;
-                setTrendingMovies(movies);
+                setTrendingMovies(response.results);
             }).catch(error => {
                 console.log(error);
                 setError(error.message);
@@ -28,37 +31,22 @@ export const Home = () => {
         }
     }, [currentDate]);
 
-    // useEffect(() => {
-    //     const newDate = getCurrentDate();
-    //     if (newDate !== currentDate) {
-    //         setCurrentDate(newDate);
-    //     }
-    // }, []);
-
     useEffect(() => {
         if (trendingMovies.length > 0) {
             saveMoviesToLocalStorage(currentDate, trendingMovies);
         }
     }, [trendingMovies]);
 
-
     return (
         <>
             {error && <p>{error}</p>}
             {!error &&
                 <ul>
-                    {trendingMovies.map(({ id, title, poster_path }) => (
-                        <li key={id}>
-                            <Link to={`/movies/${id}`} state={{ from: location }}>
-                                <div>
-                                    <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={`${title} poster`} />
-                                    <p>{title}</p>
-                                </div>
-                            </Link>
-                        </li>
-                    ))}
+                    {createMovieListItems(trendingMovies, location)}
                 </ul>
             }
         </>
     );
 }
+
+export default Home;
