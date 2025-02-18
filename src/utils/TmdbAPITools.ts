@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_TMDB_API_URL } from "../constants/APILinks";
+import { BASE_TMDB_API_URL } from "./APILinks";
 
 const TMDB_API_KEY = "941b4060b32a2bcfaa35765cb3db42d2";
 
