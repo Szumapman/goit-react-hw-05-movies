@@ -1,6 +1,6 @@
 import { useState, useEffect, use } from "react";
 import { fetchData } from "../utils/TmdbAPITools";
-import { MOVIES_TRENDING_DAILY } from "../constants//APILinks";
+import { MOVIES_TRENDING_DAILY } from "../utils/APILinks";
 import { Movie } from "../interfaces/Movie";
 import { useLocation } from "react-router-dom";
 import { getCurrentDate } from "../utils/GetCurrentDate";
