@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MOVIES_TRENDING_DAILY } from "../utils/APILinks";
 import { MovieInterface } from "../interfaces/MovieInterface";
