@@ -1,12 +1,12 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { Movie } from "../interfaces/Movie";
+import { MovieInterface } from "../interfaces/MovieInterface";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MovieURL, PosterURL } from "../utils/APILinks";
 import noPoster from "../assets/images/no_poster.jpg";
 
 const MovieDetails = () => {
-    const [movie, setMovie] = useState<Movie>();
+    const [movie, setMovie] = useState<MovieInterface>();
     const { movieId } = useParams();
     const location = useLocation();
     const goBackRef = useRef<HTMLAnchorElement>(location.state?.from ?? "/movies");

@@ -1,6 +1,6 @@
-import { Movie } from "../interfaces/Movie";
+import { MovieInterface } from "../interfaces/MovieInterface";
 
-export const saveMoviesToLocalStorage = (date: string, movies: Movie[]) => {
+export const saveMoviesToLocalStorage = (date: string, movies: MovieInterface[]) => {
     localStorage.setItem('trendingMoviesDate', date);
     localStorage.setItem('trendingMovies', JSON.stringify(movies));
 };

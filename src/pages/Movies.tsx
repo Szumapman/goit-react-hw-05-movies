@@ -1,20 +1,17 @@
 import { useState, useEffect } from "react";
-import { Movie } from "../interfaces/Movie";
+import { MovieInterface } from "../interfaces/MovieInterface";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MOVIES_SEARCH } from "../utils/APILinks";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { createMovieListItems } from "../utils/CreateMovieListItems";
-import useScrollToHash from "../hooks/useScrollToHash";
 
 const Movies = () => {
     const [query, setQuery] = useState('');
-    const [movies, setMovies] = useState<Movie[]>([]);
+    const [movies, setMovies] = useState<MovieInterface[]>([]);
     const [error, setError] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const movie = searchParams.get('movie');
     const location = useLocation();
-
-    useScrollToHash();
     
     const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);

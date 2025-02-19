@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchData } from "../utils/TmdbAPITools";
-import { Cast } from "../interfaces/Cast";
+import { CastInterface } from "../interfaces/CastInterface";
 import { MovieCreditsURL } from "../utils/APILinks";
 import { CastPhotoURL } from "../utils/APILinks";
 import noPhoto from "../assets/images/no_photo.jpg";
 
 const CastDetails = () => {
-    const [cast, setCast] = useState<Cast[]>([]);
+    const [cast, setCast] = useState<CastInterface[]>([]);
     const { movieId } = useParams();
 
     useEffect(() => {

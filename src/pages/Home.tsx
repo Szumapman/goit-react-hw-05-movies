@@ -1,20 +1,17 @@
 import { useState, useEffect, use } from "react";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MOVIES_TRENDING_DAILY } from "../utils/APILinks";
-import { Movie } from "../interfaces/Movie";
+import { MovieInterface } from "../interfaces/MovieInterface";
 import { useLocation } from "react-router-dom";
 import { getCurrentDate } from "../utils/GetCurrentDate";
 import { saveMoviesToLocalStorage, getMoviesFromLocalStorage } from "../utils/MoviesLocalStorage";
 import { createMovieListItems } from "../utils/CreateMovieListItems";
-import useScrollToHash from "../hooks/useScrollToHash";
 
 const Home = () => {
-    const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
+    const [trendingMovies, setTrendingMovies] = useState<MovieInterface[]>([]);
     const [error, setError] = useState(false);
     const [currentDate] = useState(getCurrentDate());
     const location = useLocation();
-
-    useScrollToHash();
 
     useEffect(() => {
         const { date, movies } = getMoviesFromLocalStorage();
@@ -25,7 +22,7 @@ const Home = () => {
             fetchData(MOVIES_TRENDING_DAILY).then(response => {
                 setTrendingMovies(response.results);
             }).catch(error => {
-                console.log(error);
+                error.log(error);
                 setError(error.message);
             });
         }
