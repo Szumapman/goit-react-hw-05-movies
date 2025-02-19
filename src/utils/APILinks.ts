@@ -11,3 +11,5 @@ export const PosterURL = (poster_path: String) => `https://image.tmdb.org/t/p/w3
 export const CastPhotoURL = (photo_path: String) => `https://image.tmdb.org/t/p/w200/${photo_path}`;
 
 export const MovieCreditsURL = (id: String | undefined) => `movie/${id}/credits`;
+
+export const MovieReviewsURL = (id: String | undefined) => `movie/${id}/reviews`;
