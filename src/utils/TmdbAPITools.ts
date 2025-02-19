@@ -9,7 +9,7 @@ axios.defaults.params = {
     language: "en-US",
 };
 
-export const fetchData = async (url: string, query?: string) => {
-    const { data } = await axios.get(url, query ? { params: { query } } : {});
+export const fetchData = async (url: string, query?: string, page?: number) => {
+    const { data } = await axios.get(url, query ? { params: { query, page } } : {});
     return data;
 };
