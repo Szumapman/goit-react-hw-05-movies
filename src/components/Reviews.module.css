@@ -1,0 +1,46 @@
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.reviewListItem {
+    display: flex;
+    gap: 24px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.reviewHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 20%;
+    gap: 12px;
+    margin: 0;
+}
+
+.reviewListItem p,
+.reviewListItem h3 {
+    margin: 0;
+}
+
+.reviewListItem h3 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.reviewContent {
+    flex-grow: 1;
+    text-align: left;
+}
+
+@media (max-width: 900px) {
+    .reviewListItem {
+        flex-direction: column;
+    }
+}
+
