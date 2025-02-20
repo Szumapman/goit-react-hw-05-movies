@@ -20,15 +20,18 @@ const CastDetails = () => {
     }, [movieId]);
 
     return (
-        <ul className={css.castList}>
-            {cast.map(({id, profile_path, name, character}) => (
-                <li key={id} className={css.castListItem}>
-                    <img src={profile_path ? CastPhotoURL(profile_path) : noPhoto} alt={profile_path ? `${name} photo` : `replacement image for ${name}`} />
-                    <p>{name}</p>
-                    <p>Character: {character}</p>
-                </li>
-            ))}
-        </ul>
+        <>
+            {cast.length === 0 && <p>Sorry, we have no information about cast for this movie.</p>}
+            {cast.length > 0 && <ul className={css.castList}>
+                {cast.map(({ id, profile_path, name, character }) => (
+                    <li key={id} className={css.castListItem}>
+                        <img src={profile_path ? CastPhotoURL(profile_path) : noPhoto} alt={profile_path ? `${name} photo` : `replacement image for ${name}`} />
+                        <p>{name}</p>
+                        <p>Character: {character}</p>
+                    </li>
+                ))}
+            </ul>}
+        </>
     )
 };
 
