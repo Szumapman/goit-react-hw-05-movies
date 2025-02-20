@@ -5,9 +5,6 @@ export const SharedLayout = () => {
     return (
         <>
             <header className={css.topbar}>
-                <p>
-                    <span role="img" aria-label="film projector">📽️</span>{" "}TMDB Movies 
-                </p>
                 <nav>
                     <ul className={css.navigation}>
                         <li><NavLink to="/">Home</NavLink></li>
