@@ -9,11 +9,8 @@ export const createMovieListItems = (movies: MovieInterface[], location: any) =>
 
     useEffect(() => {
         if (!location.hash) return;
-        movies.map(({ id }) => {
-            if (movieRefs.current[id] && new URL(movieRefs.current[id].href).hash === location.hash) {
-                movieRefs.current[id].scrollIntoView({ behavior: "instant" });
-            }
-        });
+        const refToScrollTo = movieRefs.current[Number(location.hash.slice(1))];
+        if (refToScrollTo) refToScrollTo.scrollIntoView({ behavior: "instant" });
     }, [movies]);
 
     return movies.map(({ id, title, poster_path }) => (
