@@ -1,0 +1,56 @@
+.movieDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.goBack {
+    text-decoration: none;
+    color: inherit;
+    margin-top: 18px;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.movieDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.movieInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.movieInfo p {
+    text-align: left;
+}
+
+.movieDetailsNav {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+}
+
+.movieDetailsNav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 720px) {
+    .movieDetails {
+        flex-direction: column;
+        align-items: center;
+    }
+    .movieDetailsNav {
+        width: 90%;
+    }
+}
