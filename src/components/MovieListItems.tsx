@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { MovieInterface } from "../interfaces/MovieInterface";
 import noPoster from "../assets/images/no_poster.jpg";
-import { PosterURL } from "./APILinks";
+import { PosterURL } from "../utils/APILinks";
 import { useEffect, useRef } from "react";
 
-export const createMovieListItems = (movies: MovieInterface[], location: any) => {
+export const MovieListItems = (movies: MovieInterface[], location: any) => {
     const movieRefs = useRef<{ [key: number]: HTMLAnchorElement | null }>({});
 
     useEffect(() => {

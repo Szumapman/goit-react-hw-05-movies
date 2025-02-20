@@ -5,7 +5,7 @@ import { MovieInterface } from "../interfaces/MovieInterface";
 import { useLocation } from "react-router-dom";
 import { getCurrentDate } from "../utils/GetCurrentDate";
 import { saveMoviesToLocalStorage, getMoviesFromLocalStorage } from "../utils/MoviesLocalStorage";
-import { createMovieListItems } from "../utils/CreateMovieListItems";
+import { MovieListItems } from "../components/MovieListItems";
 
 const Home = () => {
     const [trendingMovies, setTrendingMovies] = useState<MovieInterface[]>([]);
@@ -39,7 +39,7 @@ const Home = () => {
             {error && <p>{error}</p>}
             {!error &&
                 <ul>
-                    {createMovieListItems(trendingMovies, location)}
+                    {MovieListItems(trendingMovies, location)}
                 </ul>
             }
         </>

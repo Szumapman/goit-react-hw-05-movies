@@ -3,7 +3,7 @@ import { MovieInterface } from "../interfaces/MovieInterface";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MOVIES_SEARCH } from "../utils/APILinks";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { createMovieListItems } from "../utils/CreateMovieListItems";
+import { MovieListItems } from "../components/MovieListItems";
 
 const Movies = () => {
     const [query, setQuery] = useState('');
@@ -60,7 +60,7 @@ const Movies = () => {
             {error && <p>{error}</p>}
             {!error &&
                 <ul>
-                    {createMovieListItems(movies, location)}
+                    {MovieListItems(movies, location)}
                 </ul>
             }
         </>
