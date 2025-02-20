@@ -4,6 +4,7 @@ import { MovieInterface } from "../interfaces/MovieInterface";
 import { fetchData } from "../utils/TmdbAPITools";
 import { MovieURL, PosterURL } from "../utils/APILinks";
 import noPoster from "../assets/images/no_poster.jpg";
+import css from './MovieDetails.module.css'
 
 const MovieDetails = () => {
     const [movie, setMovie] = useState<MovieInterface>();
@@ -28,24 +29,24 @@ const MovieDetails = () => {
     const { poster_path, title, vote_average, overview } = movie;
 
     return (
-        <>
-            <Link to={goBackRef.current}>Go {location.state?.from ? "back" : "home"} </Link>
-            <div>
-                <img src={poster_path ?  PosterURL(poster_path) : noPoster} alt={poster_path ? `${title} poster` : `replacement poster for ${title}`} />
-                <h2>{title}</h2>
-                <p>Rating: {vote_average.toFixed(1)}</p>
-                <p>Overview: {overview}</p>
-                <div>
+        <div className={css.movieDetailsContainer}>
+            <Link to={goBackRef.current} className={css.goBack}>Go {location.state?.from ? "back" : "home"}</Link>
+            <div className={css.movieDetails}>
+                <img src={poster_path ? PosterURL(poster_path) : noPoster} alt={poster_path ? `${title} poster` : `replacement poster for ${title}`} />
+                <div className={css.movieInfo}>
+                    <h2>{title}</h2>
+                    <p>Rating: {vote_average.toFixed(1)}</p>
+                    <p>Overview: {overview}</p>
+                </div>
+            </div>
+            <nav className={css.movieDetailsNav}>
                     <NavLink to="cast">Cast</NavLink>
-                </div>
-                <div>
                     <NavLink to="reviews">Reviews</NavLink>
-                </div>
+            </nav>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Outlet />
                 </Suspense> 
-            </div>   
-        </>
+        </div>
     );
 }
 
