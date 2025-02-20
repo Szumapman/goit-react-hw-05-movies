@@ -9,7 +9,8 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState<MovieInterface>();
     const { movieId } = useParams();
     const location = useLocation();
-    const goBackRef = useRef<HTMLAnchorElement>(location.state?.from ?? "/movies");
+    const goBackRef = useRef<HTMLAnchorElement>(location.state?.from ?? "/");
+    console.log(goBackRef.current);
 
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const MovieDetails = () => {
 
     return (
         <>
-            <Link to={goBackRef.current}>Go back</Link>
+            <Link to={goBackRef.current}>Go {location.state?.from ? "back" : "home"} </Link>
             <div>
                 <img src={poster_path ?  PosterURL(poster_path) : noPoster} alt={poster_path ? `${title} poster` : `replacement poster for ${title}`} />
                 <h2>{title}</h2>
