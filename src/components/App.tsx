@@ -4,7 +4,6 @@ import './App.css'
 import { SharedLayout } from './SharedLayout'
 import BASE_PATH from '../constants/BASE_PATH'
 
-
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
 const MovieDetails = lazy(() => import('../pages/MovieDetails'));
@@ -22,7 +21,7 @@ export const App = () => {
             <Route path="cast" element={<CastDetails />} />
             <Route path="reviews" element={<Review />} />
           </Route>
-        <Route path={"*"} element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
   );
