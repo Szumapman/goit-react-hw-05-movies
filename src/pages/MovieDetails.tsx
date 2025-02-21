@@ -11,14 +11,13 @@ const MovieDetails = () => {
     const { movieId } = useParams();
     const location = useLocation();
     const goBackRef = useRef<HTMLAnchorElement>(location.state?.from ?? "/");
-    console.log(goBackRef.current);
 
 
     useEffect(() => {
         fetchData(MovieURL(movieId)).then(response => {
             setMovie(response);
         }).catch(error => {
-            console.log(error);
+            error.log(error.message);
         })
     }, [movieId]);
 
@@ -28,21 +27,22 @@ const MovieDetails = () => {
 
     const { poster_path, title, vote_average, overview } = movie;
 
+
     return (
         <div className={css.movieDetailsContainer}>
-            <Link to={goBackRef.current} className={css.goBack}>Go {location.state?.from ? "back" : "home"}</Link>
+            <Link to={goBackRef.current} className={css.goBack}>Go back</Link>
             <div className={css.movieDetails}>
                 <img src={poster_path ? PosterURL(poster_path) : noPoster} alt={poster_path ? `${title} poster` : `replacement poster for ${title}`} />
                 <div className={css.movieInfo}>
                     <h2>{title}</h2>
                     <p>Rating: {vote_average.toFixed(1)}</p>
                     <p>Overview: {overview}</p>
+                    <nav className={css.movieDetailsNav}>
+                        <NavLink to="cast" className={({ isActive }) => isActive ? css.active : ""}>Cast</NavLink>
+                        <NavLink to="reviews" className={({ isActive }) => isActive ? css.active : ""}>Reviews</NavLink>        
+                    </nav>
                 </div>
             </div>
-            <nav className={css.movieDetailsNav}>
-                    <NavLink to="cast">Cast</NavLink>
-                    <NavLink to="reviews">Reviews</NavLink>
-            </nav>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Outlet />
                 </Suspense> 
