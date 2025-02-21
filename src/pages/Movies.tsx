@@ -4,6 +4,7 @@ import { fetchData } from "../utils/TmdbAPITools";
 import { MOVIES_SEARCH } from "../utils/APILinks";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { MovieList } from "../components/MovieList";
+import css from './Movies.module.css'
 
 const Movies = () => {
     const [query, setQuery] = useState('');
@@ -44,18 +45,18 @@ const Movies = () => {
 
     return (
         <>
-            <form  onSubmit={handleSubmit} id="search-form">
-                <button type="submit">
-                    <span>Search</span>
-                </button>
-
+            <form  onSubmit={handleSubmit} id="search-form" className={css.searchForm}>
                 <input
                     type="text"
                     autoComplete="off"
                     autoFocus
                     placeholder="Search movies"
                     onChange={handleQuery}
+                    className={css.searchInput}
                 />
+                <button type="submit" className={css.searchButton}>
+                    <span>Search</span>
+                </button>
             </form>
             {error && <p>{error}</p>}
             {!error && MovieList(movies, location)}
