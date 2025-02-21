@@ -10,19 +10,23 @@ import css from './CastDetails.module.css'
 const CastDetails = () => {
     const [cast, setCast] = useState<CastInterface[]>([]);
     const { movieId } = useParams();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         fetchData(MovieCreditsURL(movieId)).then(response => {
             setCast(response.cast);
         }).catch(error => {
-            console.log(error);
-        })
+            error.log(error);
+        }).finally(() => {
+            setLoading(false);
+        });
     }, [movieId]);
 
     return (
         <>
-            {cast.length === 0 && <p>Sorry, we have no information about cast for this movie.</p>}
-            {cast.length > 0 && <ul className={css.castList}>
+            {loading && <p>Loading...</p>}
+            {!loading && cast.length > 0 && <ul className={css.castList}>
                 {cast.map(({ id, profile_path, name, character }) => (
                     <li key={id} className={css.castListItem}>
                         <img src={profile_path ? CastPhotoURL(profile_path) : noPhoto} alt={profile_path ? `${name} photo` : `replacement image for ${name}`} />
@@ -31,6 +35,7 @@ const CastDetails = () => {
                     </li>
                 ))}
             </ul>}
+            {!loading && cast.length === 0 && <p>Sorry, we have no information about cast for this movie.</p>}
         </>
     )
 };
