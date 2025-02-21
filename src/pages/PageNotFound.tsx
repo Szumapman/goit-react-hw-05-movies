@@ -10,7 +10,7 @@ const PageNotFound = () => {
             setCounter(prevCounter => {
                 if (prevCounter === 1) {
                     clearInterval(interval);
-                    // navigate("/");
+                    navigate("/");
                 }
                 return prevCounter - 1;
             });
