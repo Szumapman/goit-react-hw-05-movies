@@ -9,8 +9,8 @@ export const SharedLayout = () => {
             <header className={css.topbar}>
                 <nav>
                     <ul className={css.navigation}>
-                        <li><NavLink to={BASE_PATH}>Home</NavLink></li>
-                        <li><NavLink to={`${BASE_PATH}movies`}>Movies</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/movies">Movies</NavLink></li>
                     </ul>
                 </nav>
             </header>

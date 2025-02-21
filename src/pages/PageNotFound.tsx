@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import BASE_PATH from "../constants/BASE_PATH";
 
 const PageNotFound = () => {
     const [counter, setCounter] = useState(5);
@@ -11,7 +10,7 @@ const PageNotFound = () => {
             setCounter(prevCounter => {
                 if (prevCounter === 1) {
                     clearInterval(interval);
-                    navigate(BASE_PATH);
+                    navigate("/");
                 }
                 return prevCounter - 1;
             });

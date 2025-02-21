@@ -20,7 +20,7 @@ export const MovieList = (movies: MovieInterface[], location: any) => {
         { movies.map(({ id, title, poster_path }) => (
             <li key={id} id={String(id)} className={css.movieListItem}>
                 <Link
-                    to={`${BASE_PATH}movies/${id}#${id}`}
+                    to={`/movies/${id}#${id}`}
                     state={{ from: { ...location, hash: `#${id}` } }}
                     ref={(ref) => {
                         if (ref) (movieRefs.current[id] = ref)
