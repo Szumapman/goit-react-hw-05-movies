@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const PageNotFound = () => {
     const [counter, setCounter] = useState(5);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCounter(prevCounter => {
                 if (prevCounter === 1) {
                     clearInterval(interval);
-                    navigate("/");
+                    // navigate("/");
                 }
                 return prevCounter - 1;
             });
