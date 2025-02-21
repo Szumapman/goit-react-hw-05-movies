@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
+    width: 95vw;
 }
 
 .goBack {
@@ -11,6 +12,11 @@
     color: inherit;
     margin-top: 18px;
     margin-right: auto;
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     padding: 12px;
 }
 
@@ -28,21 +34,41 @@
     justify-content: flex-start;
 }
 
-.movieInfo p {
+.movieInfo p,
+.movieInfo h2 {
     text-align: left;
 }
 
 .movieDetailsNav {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 60%;
+    gap: 24px;
 }
 
 .movieDetailsNav a {
     text-decoration: none;
     color: inherit;
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    padding: 12px;
+    width: 100px;
+}
+
+.goBack:hover, 
+.movieDetailsNav a:hover {
+    background-color: #3f51b5;
+    color: #fff;
+    transform: scale(1.05);
+}   
+
+a.active {
+    background-color: #647af5;
+    color: #fff;
 }
 
 @media (max-width: 720px) {
