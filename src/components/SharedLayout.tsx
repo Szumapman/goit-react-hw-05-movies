@@ -1,7 +1,6 @@
 import { Outlet, NavLink } from "react-router-dom";
 import { Suspense } from "react";
 import css from './SharedLayout.module.css'
-import BASE_PATH from "../constants/BASE_PATH";
 
 export const SharedLayout = () => {
     return (

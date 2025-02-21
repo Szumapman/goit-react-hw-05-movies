@@ -4,7 +4,6 @@ import noPoster from "../assets/images/no_poster.jpg";
 import { PosterURL } from "../utils/APILinks";
 import { useEffect, useRef } from "react";
 import css from './MovieList.module.css'
-import BASE_PATH from "../constants/BASE_PATH";
 
 export const MovieList = (movies: MovieInterface[], location: any) => {
     const movieRefs = useRef<{ [key: number]: HTMLAnchorElement | null }>({});
