@@ -1,5 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
+import { Suspense } from "react";
 import css from './SharedLayout.module.css'
+import BASE_PATH from "../constants/BASE_PATH";
 
 export const SharedLayout = () => {
     return (
@@ -7,13 +9,15 @@ export const SharedLayout = () => {
             <header className={css.topbar}>
                 <nav>
                     <ul className={css.navigation}>
-                        <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/movies">Movies</NavLink></li>
+                        <li><NavLink to={BASE_PATH}>Home</NavLink></li>
+                        <li><NavLink to={`${BASE_PATH}movies`}>Movies</NavLink></li>
                     </ul>
                 </nav>
             </header>
             <main>
-                <Outlet />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Outlet />
+                </Suspense>
             </main>
         </>    
     );

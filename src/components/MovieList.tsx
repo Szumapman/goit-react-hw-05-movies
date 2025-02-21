@@ -4,6 +4,7 @@ import noPoster from "../assets/images/no_poster.jpg";
 import { PosterURL } from "../utils/APILinks";
 import { useEffect, useRef } from "react";
 import css from './MovieList.module.css'
+import BASE_PATH from "../constants/BASE_PATH";
 
 export const MovieList = (movies: MovieInterface[], location: any) => {
     const movieRefs = useRef<{ [key: number]: HTMLAnchorElement | null }>({});
@@ -19,7 +20,7 @@ export const MovieList = (movies: MovieInterface[], location: any) => {
         { movies.map(({ id, title, poster_path }) => (
             <li key={id} id={String(id)} className={css.movieListItem}>
                 <Link
-                    to={`/movies/${id}#${id}`}
+                    to={`${BASE_PATH}movies/${id}#${id}`}
                     state={{ from: { ...location, hash: `#${id}` } }}
                     ref={(ref) => {
                         if (ref) (movieRefs.current[id] = ref)
