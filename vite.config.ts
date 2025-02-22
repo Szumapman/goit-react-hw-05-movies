@@ -6,4 +6,4 @@ import BASE_PATH from './src/constants/BASE_PATH'
 export default defineConfig({
   base: BASE_PATH,
   plugins: [react()],
-})
+});
