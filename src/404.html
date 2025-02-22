@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
+    <title>Page Not Found</title>
     <script type="text/javascript">
+      // Sprawdzenie, czy URL zawiera już bazową ścieżkę
       var basePath = "/goit-react-hw-05-movies";
       var pathname = window.location.pathname;
-      var search = window.location.search;
-      var newUrl = window.location.origin + basePath + pathname + search;
-      window.location.replace(newUrl);
+      if (!pathname.includes(basePath)) {
+        var newUrl =
+          window.location.origin + basePath + pathname + window.location.search;
+        window.location.replace(newUrl);
+      }
     </script>
   </head>
   <body>
-    <h1>Redirecting...</h1>
+    <h1>Page Not Found</h1>
+    <p>Redirecting...</p>
   </body>
 </html>
