@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <title>Page Not Found</title>
     <script type="text/javascript">
-      // Redirect to mine React app
+      // Redirect to the correct path
       var pathname = window.location.pathname;
-      var newUrl =
-        <!-- window.location.origin + "/goit-react-hw-05-movies" + pathname; -->
-        window.location.origin + pathname;
-      window.location.replace(newUrl);
+      var basePath = "/goit-react-hw-05-movies";
+      if (!pathname.startsWith(basePath)) {
+        var newUrl = window.location.origin + basePath + pathname;
+        window.location.replace(newUrl);
+      }
     </script>
   </head>
   <body>
